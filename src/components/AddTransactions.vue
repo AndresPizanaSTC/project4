@@ -1,25 +1,23 @@
-<scipt setup>
-    import {ref} from 'vue'
-    const text = ref('')
-    const amount = ref('')
+<script setup>
+import { ref } from 'vue';
 
-    const emit = defineEmits([
-        'transactionsSubmitted'
-    ])
+const text = ref('');
+const amount = ref('');
 
-    const onSubmit = () =>{
-        const transactionData = {
-            text: text.value,
-            amount: parseFloat(amount.value),
-        }
+const emit = defineEmits(['transactionSubmitted']);
 
-        emit('transactionsSubmitted', transactionData)
+const onSubmit = () => {
+  const transactionData = {
+    text: text.value,
+    amount: parseFloat(amount.value),
+  };
 
-        text.value = ''
-        amount.value = ''
-    }
+  emit('transactionSubmitted', transactionData);
 
-</scipt>
+  text.value = '';
+  amount.value = '';
+};
+</script>
 
 <template>
 
